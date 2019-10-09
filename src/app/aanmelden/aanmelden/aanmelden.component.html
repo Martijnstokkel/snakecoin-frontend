@@ -1,0 +1,35 @@
+<div class="row">
+    <div class="col">
+<br>
+<!-- <form #aanmelden="ngForm" (ngSubmit)="inlogCheck(aanmelden)"  > -->
+
+<form #aanmelden="ngForm" (ngSubmit)="versturen(aanmelden)"  >
+    <table>
+      <th>Login</th>
+     <tr><input name="Gebruikersnaam" [(ngModel)]="account.gebruikersnaam" placeholder="Gebruikersnaam" ></tr>
+     <tr><input type="password" name="Wachtwoord" [(ngModel)]="account.wachtwoord" placeholder="Wachtwoord" ></tr>
+    
+      <tr>   
+        <button type="submit" class="btn btn-primary">Login</button>
+  
+      </tr>
+    </table>
+  </form>
+{{goedmelding}}
+  {{foutmelding}}
+  {{foutinlog}}
+
+</div>
+
+<div class="col">  
+
+
+  <app-accountcreate></app-accountcreate>
+</div>
+
+<!-- <div  class="alert alert-danger" role="alert">
+  {{foutmelding}}
+</div> -->
+
+
+</div>

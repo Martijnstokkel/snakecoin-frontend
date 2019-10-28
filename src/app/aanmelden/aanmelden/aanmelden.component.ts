@@ -3,6 +3,7 @@ import {Account} from 'src/app/domain/account';
 import { LoginService } from 'src/app/login.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-aanmelden',
@@ -16,46 +17,51 @@ export class AanmeldenComponent implements OnInit {
 
   constructor(private route: ActivatedRoute,
     private loginService: LoginService,
+    private cookie: CookieService,
     private router: Router) { }
   ngOnInit() {
   }
   goedmelding : String;
   foutmelding : String;
-  actief : boolean = false;
-  ingelogd : boolean = false;
+ 
+  
+  
+
   versturen(aanmelden: NgForm) {
-    if(this.ingelogd === false){
-    if(this.actief === false){
+    if(!this.cookie.check('cookie-name')){
+  
+     
     
    
     this.loginService.checkLogin(this.account.gebruikersnaam, this.account.wachtwoord).subscribe(
       account  => { 
+        delete this.foutmelding;
         this.loginService.activeaccount = account; 
-        console.log(account);
-        this.actief = true;
-        this.ingelogd = true;
-        console.log(this.actief);
+        console.log(this.loginService.activeaccount.id)
+        this.cookie.set('cookie-id', this.loginService.activeaccount.id.toString())
+        console.log(this.cookie.get('cookie-id'));
         this.ingelogdeAccount = this.account.gebruikersnaam;
         this.goedmelding = "U bent ingelogd, Welkom " + this.account.gebruikersnaam
-        this.router.navigate(['snake'])
+        
+        this.cookie.set('cookie-name', this.account.gebruikersnaam);
+        console.log(this.cookie.get('cookie-name'));
+     
+        this.router.navigate(['snake']);
       },
       error => {console.log(error.message);
-       this.foutmelding = "Het gebruikersnaam is niet bekend of het wacthwoord is verkeed."},
-      // () => this.router.navigate(['home'] )
+       this.foutmelding = "Het gebruikersnaam is niet bekend of het wacthwoord is verkeerd."},
+ 
     )
+  }else{
+    
+    this.account.gebruikersnaam = this.cookie.get('cookie-name');
+   
+    delete this.foutinlog;
+    delete this.goedmelding;
+    this.foutinlog = "U bent al ingelogd als: " + this.cookie.get('cookie-name')
   }
   
 }
-else if(this.ingelogd === true && this.account.gebruikersnaam == this.ingelogdeAccount){
 
-console.log(this.account.id)
-  delete(this.goedmelding);
-  this.foutinlog = "U bent al ingelogd als: " + this.account.gebruikersnaam
-  
-}else {
-  delete(this.foutinlog);
-  console.log(this.account.id)
-  this.foutmelding = "U kunt niet inloggen met een ander account zolang u ingelogd bent!"
-}
   }
-}
+

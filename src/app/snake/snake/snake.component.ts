@@ -3,6 +3,8 @@ import { BestScoreManager } from 'src/app/app.storage.service';
 import { CONTROLS, COLORS, BOARD_SIZE, GAME_MODES } from 'src/app/app.constants';
 import { Router } from '@angular/router';
 import { LoginService } from 'src/app/login.service';
+import { CookieService } from 'ngx-cookie-service';
+
 
 @Component({
   selector: 'app-snake',
@@ -14,9 +16,10 @@ import { LoginService } from 'src/app/login.service';
 })
 export class SnakeComponent implements OnInit{
   
+  
     
   ngOnInit(){
-    if(this.login.activeaccount == null){
+    if(!this.cookie.check('cookie-name')){
       this.router.navigate(['aanmelden']);
     }
   }
@@ -57,6 +60,8 @@ export class SnakeComponent implements OnInit{
     private bestScoreService: BestScoreManager,
     private login: LoginService,
     private router: Router,
+    private cookie: CookieService,
+    
   ) {
     this.setBoard();
   }

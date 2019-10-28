@@ -31,9 +31,9 @@ export class AccountcreateComponent implements OnInit {
           console.log(error.message)
           if (error.message = "Http failure response for http://localhost:8080//aanmelden: 409 OK") {
             this.wwerror = "Dit gebruikersnaam bestaat al in onze database."
-        }//} else {
-          //  this.router.navigate(['account'] )
-          //}
+        } else if(error.message = "Http failure response for http://localhost:8080/aanmelden: 500 OK"){
+          this.wwerror = "Uw gebruikersnaam is te kort of te lang, U moet minimaal 7 en maximaal 15 tekens gebruiken."
+        }
           
         },
         // () => this.router.navigate(['account'] )

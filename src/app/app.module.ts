@@ -10,6 +10,8 @@ import { AccountcreateComponent } from 'src/app/accountcreate/accountcreate/acco
 import { HoofdmenuComponent } from './hoofdmenu/hoofdmenu/hoofdmenu.component';
 import { AanmeldenComponent } from './aanmelden/aanmelden/aanmelden.component';
 import { SnakeComponent } from './snake/snake/snake.component';
+import { CookieService } from 'ngx-cookie-service';
+import { UserpageComponent } from './userpage/userpage.component'
 @NgModule({
   declarations: [
     AppComponent,
@@ -17,6 +19,7 @@ import { SnakeComponent } from './snake/snake/snake.component';
     HoofdmenuComponent,
     AanmeldenComponent,
     SnakeComponent,
+    UserpageComponent,
   ],
   imports: [
     BrowserModule,
@@ -26,7 +29,9 @@ import { SnakeComponent } from './snake/snake/snake.component';
     
   ],
   providers: [ 
-    BestScoreManager
+    BestScoreManager,
+    CookieService
+
   ],
 
   bootstrap: [AppComponent],

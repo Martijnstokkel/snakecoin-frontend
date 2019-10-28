@@ -6,6 +6,20 @@
       <a class="nav-link" routerLink="snake" [routerLinkActive]="['active']">Speel snake</a> 
       <br>
       <a class="nav-link" routerLink="aanmelden" [routerLinkActive]="['active']">Aanmelden</a>
+      <br>
+      
+      <a class="nav-link" routerLink="Userpage" [routerLinkActive]="['active']">Userpage</a>
       </nav>
+    </div>
+    <div>
+      <form #aanmelden="ngForm" (ngSubmit)="logout()"  >
+        <table>
+         
+          <tr>   
+            <button type="submit" class="btn btn-primary">Logout</button>
+            
+          </tr>
+        </table>
+      </form>
     </div>
   </header>

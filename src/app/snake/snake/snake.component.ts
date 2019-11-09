@@ -4,6 +4,8 @@ import { CONTROLS, COLORS, BOARD_SIZE, GAME_MODES } from 'src/app/app.constants'
 import { Router } from '@angular/router';
 import { LoginService } from 'src/app/login.service';
 import { CookieService } from 'ngx-cookie-service';
+import { HighscoresService } from 'src/app/highscores.service';
+import { Highscore } from 'src/app/domain/highscore';
 
 
 @Component({
@@ -19,9 +21,9 @@ export class SnakeComponent implements OnInit{
   
     
   ngOnInit(){
-    if(!this.cookie.check('cookie-name')){
-      this.router.navigate(['aanmelden']);
-    }
+    // if(!this.cookie.check('cookie-name')){
+    //   this.router.navigate(['aanmelden']);
+    // }
   }
   private interval: number;
   private tempDirection: number;
@@ -33,6 +35,7 @@ export class SnakeComponent implements OnInit{
   public board = [];
   public obstacles = [];
   public score = 0;
+  public realscore = 0;
   public showMenuChecker = false;
   public gameStarted = false;
   public newBestScore = false;
@@ -61,7 +64,7 @@ export class SnakeComponent implements OnInit{
     private login: LoginService,
     private router: Router,
     private cookie: CookieService,
-    
+    private highscoreService: HighscoresService
   ) {
     this.setBoard();
   }
@@ -216,7 +219,7 @@ export class SnakeComponent implements OnInit{
 
   eatFruit(): void {
     this.score += 10;
-
+    this.realscore += 10.00001;
     let tail = Object.assign({}, this.snake.parts[this.snake.parts.length - 1]);
 
     this.snake.parts.push(tail);
@@ -226,9 +229,29 @@ export class SnakeComponent implements OnInit{
       this.interval -= 15;
     }
   }
-
+  highscore: Highscore = new Highscore();
   gameOver(): void {
     this.stopClock()
+    this.highscoreService.spelen();
+    this.highscore.gebruikersnaam = this.cookie.get('cookie-name')
+    this.highscore.highscore = this.realscore
+    console.log(this.highscore.gebruikersnaam)
+    console.log(this.highscore.highscore)
+    if(this.time > 30){
+      console.log("uw hs word opgeslagen")
+      if(this.cookie.check('cookie-name')){
+        console.log("uw hs word opgeslagen")
+        if(this.highscore.highscore === this.realscore)
+    this.highscoreService.create(this.highscore).subscribe(highscore => {
+      console.log(this.highscore.gebruikersnaam)
+      console.log("uw hs word opgeslagen")
+      
+    })
+  }else{
+    
+  }
+  }
+
     this.isGameOver = true;
     
     this.gameStarted = false;
@@ -269,11 +292,13 @@ export class SnakeComponent implements OnInit{
   newGame(mode: string): void {
     this.time = 0;
     this.startClock();
+    this.highscoreService.spelen();
     this.default_mode = mode || 'classic';
     this.showMenuChecker = false;
     this.newBestScore = false;
     this.gameStarted = true;
     this.score = 0;
+    this.realscore = 0;
     this.tempDirection = CONTROLS.LEFT;
     this.isGameOver = false;
     this.interval = 150;

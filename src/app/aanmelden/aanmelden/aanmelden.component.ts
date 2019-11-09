@@ -28,6 +28,7 @@ export class AanmeldenComponent implements OnInit {
   
 
   versturen(aanmelden: NgForm) {
+    if(this.account.gebruikersnaam.length > 6 && this.account.gebruikersnaam.length < 15){
     if(!this.cookie.check('cookie-name')){
   
      
@@ -37,19 +38,23 @@ export class AanmeldenComponent implements OnInit {
       account  => { 
         delete this.foutmelding;
         this.loginService.activeaccount = account; 
-        console.log(this.loginService.activeaccount.id)
+        // console.log(this.loginService.activeaccount.id)
         this.cookie.set('cookie-id', this.loginService.activeaccount.id.toString())
-        console.log(this.cookie.get('cookie-id'));
+        // console.log(this.cookie.get('cookie-id'));
         this.ingelogdeAccount = this.account.gebruikersnaam;
         this.goedmelding = "U bent ingelogd, Welkom " + this.account.gebruikersnaam
         
-        this.cookie.set('cookie-name', this.account.gebruikersnaam);
-        console.log(this.cookie.get('cookie-name'));
+        this.cookie.set('cookie-name', this.loginService.activeaccount.gebruikersnaam);
+        // console.log(this.cookie.get('cookie-name'));
      
         this.router.navigate(['snake']);
       },
-      error => {console.log(error.message);
-       this.foutmelding = "Het gebruikersnaam is niet bekend of het wacthwoord is verkeerd."},
+      error => {
+        console.log("help")
+        console.log(error.message);
+        delete this.foutinlog;
+        delete this.goedmelding;
+        this.foutmelding = "Invalid username or password111"},
  
     )
   }else{
@@ -60,7 +65,9 @@ export class AanmeldenComponent implements OnInit {
     delete this.goedmelding;
     this.foutinlog = "U bent al ingelogd als: " + this.cookie.get('cookie-name')
   }
-  
+}else{
+  this.foutmelding = "Invalid username or password"
+}
 }
 
   }

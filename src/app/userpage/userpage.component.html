@@ -1,13 +1,50 @@
 
-<form #aanmelden="ngForm" (ngSubmit)="versturen(delete)"  >
+<!-- <form #aanmelden="ngForm" (ngSubmit)="versturen(delete)"  >
     <table>
       <th>Delete account</th>
-     <!-- <tr><input name="Gebruikersnaam" [(ngModel)]="account.gebruikersnaam" placeholder="Gebruikersnaam" ></tr>
-     <tr><input type="password" name="Wachtwoord" [(ngModel)]="account.wachtwoord" placeholder="Wachtwoord" ></tr>
-     -->
+     
       <tr>   
         <button type="submit" class="btn btn-primary">Delete account</button>
         
       </tr>
     </table>
+  </form> -->
+  <form #aanmelden="ngForm" (ngSubmit)="versturen2(delete)"  >
+    <table>
+      <th>Login</th>
+     <tr><input name="Gebruikersnaam" [(ngModel)]="account.gebruikersnaam" placeholder="Gebruikersnaam" ></tr>
+     <tr><input type="password" name="Wachtwoord" [(ngModel)]="account.wachtwoord" placeholder="Wachtwoord" ></tr>
+    
+      <tr>   
+        <button type="submit" class="btn btn-primary">Delete Account</button>
+        
+      </tr>
+    </table>
   </form>
+  {{foutmelding}}
+  <table>
+    <!-- <a routerLink = "reviewCreate">Nieuwe Locatie</a> -->
+    <tr>
+      <th>Gebruikersnaam</th>
+      <th>highscore</th>
+      <!-- <th>Titel</th>
+      <th>inhoud</th>      -->
+    </tr>
+    <tr *ngFor="let highscores of highscores; let i=index">
+        <!--< *ngIf="i<5"> -->
+      <td *ngIf="i<5">{{highscores.gebruikersnaam}}</td>
+      <td *ngIf="i<5">{{highscores.highscore}}</td>
+        <!-- </div> -->
+      <!-- <td>{{review.titel }}</td>
+      <td>{{review.inhoud}}</td> -->
+      <!-- <td><a [routerLink]="['../reviewupdate', review.id]">Edit</a></td>
+      <td><a [routerLink]="['../reviewdelete', review.id]">Delete</a></td> -->
+
+      
+      <!-- <a routerLink = "reviewCreate">Nieuwe Locatie</a>  -->
+    </tr>
+      
+
+  </table>
+
+

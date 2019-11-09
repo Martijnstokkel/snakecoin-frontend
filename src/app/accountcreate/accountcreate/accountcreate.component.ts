@@ -14,7 +14,7 @@ export class AccountcreateComponent implements OnInit {
   
   wachtwoordcheck : String;
   wwerror : String;
-  succesmes : String;
+  
   constructor(private loginService : LoginService,
     private router : Router) { }
 
@@ -22,16 +22,18 @@ export class AccountcreateComponent implements OnInit {
   }
 
   versturen() {
-
+  
     if(this.wachtwoordcheck == this.account.wachtwoord) {
       //this.account.wachtwoord = shajs('sha256').update(this.account.wachtwoord).digest('hex');
     this.loginService.create(this.account).subscribe(
-        account  => { console.log(account) },
+        account  => { this.wwerror = "Uw account is aangemaakt";
+          //  console.log(account)
+          },
         error =>  {//this.wwerror = error.message,//console.log(error.message),
-          console.log(error.message)
-          if (error.message = "Http failure response for http://localhost:8080//aanmelden: 409 OK") {
+          // console.log(error.message)
+          if (error.message === "Http failure response for http://localhost:8080//aanmelden: 409 OK") {
             this.wwerror = "Dit gebruikersnaam bestaat al in onze database."
-        } else if(error.message = "Http failure response for http://localhost:8080/aanmelden: 500 OK"){
+        } else if(error.message === "Http failure response for http://localhost:8080/aanmelden: 411 OK"){
           this.wwerror = "Uw gebruikersnaam is te kort of te lang, U moet minimaal 7 en maximaal 15 tekens gebruiken."
         }
           

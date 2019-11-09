@@ -18,7 +18,7 @@ export class LoginService {
   constructor(private http: HttpClient) { }
 
   public retrieveAll(): Observable<Account> {
-    console.log(`${environment.Snakeurl}Account`);
+    // console.log(`${environment.Snakeurl}Account`);
     return this.http.get<Account>(`${environment.Snakeurl}Account`);
   }
 
@@ -26,9 +26,9 @@ export class LoginService {
     var account: Account = new Account();
     account.gebruikersnaam = gebruikersnaam;
     account.wachtwoord = wachtwoord;
-    console.log(account.gebruikersnaam);
-    console.log(account.wachtwoord);
-    console.log(`${environment.Snakeurl}aanmelden`);
+    // console.log(account.gebruikersnaam);
+    // console.log(account.wachtwoord);
+    // console.log(`${environment.Snakeurl}aanmelden`);
     return this.http.put<Account>(`${environment.Snakeurl}aanmelden`,account, this.httpOptions);
     
   }
@@ -37,7 +37,14 @@ export class LoginService {
         account, this.httpOptions)
   }
   public delete(id: number): Observable<void> {
-    console.log(id)
-    return this.http.delete<void>(`${environment.Snakeurl}aanmelden/${id}`,);
+    // console.log(id)
+    return this.http.delete<void>(`${environment.Snakeurl}aanmelden/${id}`);
+  }
+
+  public deleteAccount(gebruikersnaam: string, wachtwoord: string ): Observable<Account> {
+    var account: Account = new Account();
+    account.gebruikersnaam = gebruikersnaam;
+    account.wachtwoord = wachtwoord;
+    return this.http.put<Account>(`${environment.Snakeurl}aanmelden/${gebruikersnaam}`,account, this.httpOptions);
   }
 }

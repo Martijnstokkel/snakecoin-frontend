@@ -1,25 +1,115 @@
-<app-hoofdmenu></app-hoofdmenu>
-<router-outlet></router-outlet>
-<!-- <app-snake></app-snake> -->
-<!-- <div class="game-container">
-  <div class="game-header">
-    <h3 class="logo">ngx-Snake</h3>
-    <div class="Time">
-        <h3 class="time" [ngClass]="{'time': time}">Time: {{time}}</h3>
-    </div>
-    <div class="score-block">
-      
-      <h3 class="score" [ngClass]="{'new-best-score': newBestScore}">Score: {{score}}</h3>
-      <h3 class="best-score" [ngClass]="{'new-best-score': newBestScore}">Best Score: {{best_score}}</h3>
-    </div>
-  </div>
-  <div class="row" *ngFor="let column of board; let i = index;">
-    <div class="column" [ngStyle]="{'background-color': setColors(i, j)}" *ngFor="let row of column; let j = index"></div>
-  </div>
-  <div class="start-button" [ngClass]="{'disable-clicks': gameStarted}" (click)="showMenu()">Start Game</div>
-  <div class="new-game-menu" *ngIf="showMenuChecker">
-    <span class="new-game-menu-label">Select Mode</span>
-    <div class="start-button new-game-button" (click)="newGame(mode)" *ngFor="let mode of getKeys(all_modes)">{{all_modes[mode]}}</div>
-  </div>
-  
-</div> -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Martijn CV</title>
+    
+    <!-- <link href="style.css" rel="stylesheet"> -->
+  </head>
+
+  <body>
+	
+	  <div  class="wrapper">
+	 <div class="background">
+			<div class="bg">
+	 
+		 <div class="row">
+		  <div class="foto-side">
+			 <div class="foto"><img class="border" src="https://martijn-cv.nl/martijn.png" alt="avatar" width="100%" /></div>
+			 </div>
+		
+		  <div id="centeren" class="header-side">
+			 <h1>Martijn Stokkel</h1>
+			 </div>
+			</div>
+		</div>
+		 
+		</div>
+	  
+		  <div id="centeren" class="section" >
+			  <!-- <center> -->
+			  <div class="menu" >
+			  <div class="bgf">
+				  <div class="row">
+					
+			    <div class="box-item">
+					  <h2>Over Mij</h2>
+					
+					  <ul><li><a class="nav-link" routerLink="home" [routerLinkActive]="['active']">home</a></li> 
+						  <li><a class="nav-link" routerLink="wiebenik" [routerLinkActive]="['active']">wie ben ik</a></li>
+						<li><a class="nav-link" routerLink="opleidingen" [routerLinkActive]="['active']">opleidingen</a></li>
+						<li><a class="nav-link" routerLink="hobby" [routerLinkActive]="['active']">hobby's</a></li>
+
+
+					
+					   </ul>
+			     </div>
+					  
+				<div class="box-stripe"></div>
+					  
+				<div class="box-item">
+					
+					   <h2>IT kennis</h2>
+					
+					   <ul>
+							<li><a class="nav-link" routerLink="frontend" [routerLinkActive]="['active']">front-end</a></li>
+					   <li><a class="nav-link" routerLink="backend" [routerLinkActive]="['active']">Back-end</a></li>
+					   <li><a class="nav-link" routerLink="framework" [routerLinkActive]="['active']">frameworks</a></li>
+					   <li><a class="nav-link" routerLink="overige" [routerLinkActive]="['active']">overige</a></li>
+					   </ul>
+					   
+				</div>
+					  
+				<div class="box-stripe"></div>
+					  
+				<div class="box-item">
+					  <h2>Projecten</h2>
+					
+					  <ul>
+							<nav class="nav nav-masthead justify-content-center">
+					<li><a class="nav-link" routerLink="snake" [routerLinkActive]="['active']">Speel snake</a></li>
+						
+						<li><a class="nav-link" routerLink="aanmelden" [routerLinkActive]="['active']">Aanmelden</a></li>
+						
+						
+						<li><a class="nav-link" routerLink="Userpage" [routerLinkActive]="['active']">Userpage</a></li>
+							</nav>
+				      </ul>
+					
+				</div>
+				
+				 
+				  </div>
+				</div>
+			  </div>
+			  <!-- </center> -->
+		  </div>
+		  
+		  
+		   <div class="row">
+			  
+			   
+			    <!-- <div class="text-side">
+			 <h2>CV van Martijn Stokkel</h2>
+					<p>
+							Welkom op de website van mij, Martijn Stokkel. Hier kunt u informatie vinden over mij en mijn projecten. Wilt u meer over mij weten of heeft u andere vragen kunt u contact met mij opnemen via <a href="https://www.linkedin.com/in/martijn-stokkel"target="_blank">linkedIn</a>
+					
+					
+					</p>
+			 </div> -->
+			
+		  <!-- <div class="foto-side">
+			 <center><img src="images/martijn-vol.jpg" width="80%" /></center>
+		  </div> -->
+		 
+		  </div>
+	
+	  </div>
+	  <router-outlet></router-outlet>
+  </body>
+
+</html>
+
+	 

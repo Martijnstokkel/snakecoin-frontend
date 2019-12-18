@@ -24,6 +24,7 @@ export class SnakeComponent implements OnInit{
     // if(!this.cookie.check('cookie-name')){
     //   this.router.navigate(['aanmelden']);
     // }
+  
   }
   private interval: number;
   private tempDirection: number;
@@ -69,6 +70,7 @@ export class SnakeComponent implements OnInit{
     this.setBoard();
   }
 
+  
   handleKeyboardEvents(e: KeyboardEvent) {
     if (e.keyCode === CONTROLS.LEFT && this.snake.direction !== CONTROLS.RIGHT) {
       this.tempDirection = CONTROLS.LEFT;

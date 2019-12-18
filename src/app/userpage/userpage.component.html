@@ -9,9 +9,10 @@
       </tr>
     </table>
   </form> -->
+  <!-- <div layout="column" layout-align="center center"> -->
   <form #aanmelden="ngForm" (ngSubmit)="versturen2(delete)"  >
-    <table>
-      <th>Login</th>
+    <table class="center">
+      <th>Delete Account</th>
      <tr><input name="Gebruikersnaam" [(ngModel)]="account.gebruikersnaam" placeholder="Gebruikersnaam" ></tr>
      <tr><input type="password" name="Wachtwoord" [(ngModel)]="account.wachtwoord" placeholder="Wachtwoord" ></tr>
     
@@ -21,8 +22,10 @@
       </tr>
     </table>
   </form>
+
   {{foutmelding}}
-  <table>
+
+  <table class="center">
     <!-- <a routerLink = "reviewCreate">Nieuwe Locatie</a> -->
     <tr>
       <th>Gebruikersnaam</th>
@@ -46,5 +49,6 @@
       
 
   </table>
+  <!-- </div> -->
 
 

@@ -4,6 +4,7 @@ import { LoginService } from 'src/app/login.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
 import { CookieService } from 'ngx-cookie-service';
+import { BestScoreManager } from 'src/app/app.storage.service';
 
 @Component({
   selector: 'app-aanmelden',
@@ -18,14 +19,24 @@ export class AanmeldenComponent implements OnInit {
   constructor(private route: ActivatedRoute,
     private loginService: LoginService,
     private cookie: CookieService,
-    private router: Router) { }
+    private router: Router,
+    private bestScoreService: BestScoreManager) { }
   ngOnInit() {
   }
   goedmelding : String;
   foutmelding : String;
  
   
-  
+  logout(){
+   
+    // console.log(this.cookie.get('cookie-name'));
+    this.cookie.delete('cookie-name');
+   
+   this.bestScoreService.clear();
+    
+    // console.log(this.cookie.get('cookie-name'));
+    this.router.navigate(['aanmelden'])
+  }
 
   versturen(aanmelden: NgForm) {
     if(this.account.gebruikersnaam.length > 6 && this.account.gebruikersnaam.length < 15){
@@ -54,7 +65,7 @@ export class AanmeldenComponent implements OnInit {
         console.log(error.message);
         delete this.foutinlog;
         delete this.goedmelding;
-        this.foutmelding = "Invalid username or password111"},
+        this.foutmelding = "Invalid username or password"},
  
     )
   }else{

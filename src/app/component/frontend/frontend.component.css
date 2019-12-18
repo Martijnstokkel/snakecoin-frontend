@@ -1,0 +1,16 @@
+p  {
+    color: rgb(10, 8, 8);
+    font-weight: 500;
+    letter-spacing:.1em;
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin: .5rem 1rem 1.5rem;	
+    text-align: center;
+    -webkit-text-stroke: 0.3px black;
+   }
+   body {
+    background-color: #fff;
+    color: rgb(2, 12, 1);
+    text-transform: uppercase; 
+    overflow-x: hidden;
+   }

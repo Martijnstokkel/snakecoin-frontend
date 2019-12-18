@@ -11,7 +11,15 @@ import { HoofdmenuComponent } from './hoofdmenu/hoofdmenu/hoofdmenu.component';
 import { AanmeldenComponent } from './aanmelden/aanmelden/aanmelden.component';
 import { SnakeComponent } from './snake/snake/snake.component';
 import { CookieService } from 'ngx-cookie-service';
-import { UserpageComponent } from './userpage/userpage.component'
+import { UserpageComponent } from './userpage/userpage.component';
+import { WiebenikComponent } from './component/wiebenik/wiebenik.component';
+import { OpleidingenComponent } from './component/opleidingen/opleidingen.component';
+import { HobbyComponent } from './component/hobby/hobby.component';
+import { FrontendComponent } from './component/frontend/frontend.component';
+import { BackendComponent } from './component/backend/backend.component';
+import { FrameworksComponent } from './component/frameworks/frameworks.component';
+import { OverigeComponent } from './component/overige/overige.component';
+import { HomeComponent } from './component/home/home.component'
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,6 +28,14 @@ import { UserpageComponent } from './userpage/userpage.component'
     AanmeldenComponent,
     SnakeComponent,
     UserpageComponent,
+    WiebenikComponent,
+    OpleidingenComponent,
+    HobbyComponent,
+    FrontendComponent,
+    BackendComponent,
+    FrameworksComponent,
+    OverigeComponent,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,

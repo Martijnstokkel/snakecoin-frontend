@@ -1,10 +1,22 @@
+<div>
+    <form #aanmelden="ngForm" (ngSubmit)="logout()"  >
+      <table>
+       
+        <tr>   
+          <button type="submit" class="btn btn-primary">Logout</button>
+          
+        </tr>
+      </table>
+    </form>
+  </div>
+
 <div class="row">
     <div class="col">
 <br>
 <!-- <form #aanmelden="ngForm" (ngSubmit)="inlogCheck(aanmelden)"  > -->
 
 <form #aanmelden="ngForm" (ngSubmit)="versturen(aanmelden)"  >
-    <table>
+    <table class="center">
       <th>Login</th>
      <tr><input name="Gebruikersnaam" [(ngModel)]="account.gebruikersnaam" placeholder="Gebruikersnaam" ></tr>
      <tr><input type="password" name="Wachtwoord" [(ngModel)]="account.wachtwoord" placeholder="Wachtwoord" ></tr>

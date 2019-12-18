@@ -32,6 +32,7 @@ export class UserpageComponent implements OnInit {
   foutmelding : String;
   versturen2(userpage: NgForm){
     console.log("jaja")
+    
     if(this.account.gebruikersnaam.length > 6 && this.account.gebruikersnaam.length < 15){
       this.loginservice.deleteAccount(this.account.gebruikersnaam, this.account.wachtwoord).subscribe( account  => { 
         console.log("jajaja")

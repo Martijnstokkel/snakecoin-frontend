@@ -3,7 +3,7 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  Snakeurl: "http://localhost:8080/",
+  Snakeurl: "http://localhost:3306/snakecoin/",
   production: false
 };
 
